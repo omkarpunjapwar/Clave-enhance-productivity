@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clave - enhance productivity</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="BgCircleTop"></div>
+    <div class="BgCircleBottom"></div>
+    <div class="major_bG">
+        <div class="BgCircle1"></div>
+
+        <ul class="topBarlist">
+            <li class="topBarText">Create</li>
+            <li class="createButtons"> <img class="checkButt" src="images/checkBox.png" alt=""><img class="listButt"
+                    src="images/list.png" alt=""></li>
+            <li class="reload" onclick="location.reload()"><img src="images/reload-white.png" alt="icon*"></li>
+        </ul>
+        <div class="sideBarDiv">
+            <ul class="sideBarlist">
+                <li class="iconsSideBar"><a href="#"><img id="homeNavButt" src="images/home.png" alt="icon1*"></a></li>
+                <li class="iconsSideBar"><a href="#"><img id="todoNavButt"  src="images/checkBox.png" alt="icon1*"></a></li>
+                <li class="iconsSideBar"><a href="#"><img id="listNavButt"  src="images/list.png" alt="icon1*"></a></li>
+                <li class="iconsSideBar" id="profile"><a href="#"><img id="profileNavButt" src="images/profile.png" alt="icon1*"></a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="main_container">
+            <div class="Notes">
+
+                <div class="NotesTab">
+                    <textarea class="headingArea" name="Heading">This is Heading</textarea>
+
+                    <textarea class="NotePad"
+                        name="Notes">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam assumenda quasi, suscipit fugit beatae nostrum deleniti iure minima consequatur soluta aliquam corrupti blanditiis asperiores obcaecati natus reiciendis porro ratione tempore!</textarea>
+                    <div class="saveIcon"></div>
+                </div>
+
+
+                <div class="NotesTab ndBG"> <textarea class="headingArea" name="Heading">This is Heading</textarea>
+                    <textarea class="NotePad"
+                        name="Notes">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam assumenda quasi, suscipit fugit beatae nostrum deleniti iure minima consequatur soluta aliquam corrupti blanditiis asperiores obcaecati natus reiciendis porro ratione tempore!</textarea>
+                    <div class="saveIcon"></div>
+                </div>
+
+            </div>
+            <!-- --------------------To-Do Tabs------------------- -->
+
+            <div class="ToDoContainer">
+                <div class="todoTab">
+                    <div class="todoHeading" contenteditable="true" aria-placeholder="Title">Title...
+                    </div>
+                    <div class="TodoList">
+                        <ul>
+                            <li><input type="checkbox">
+                                <div class="ToDoText" contenteditable="true">Sample text.</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            
+            </div>
+            <!-- --------------------Login Page------------------- -->
+            <div class="LoginDiv">
+
+                <div class="loginTab">
+                    <div class="loginCard">
+                        <div class="LoginTagline">
+                            Ditch the chaos, unleash the awesome
+                        </div>
+                        <div class="emailID">
+                            <input type="email" placeholder="yourname@gmail.com">
+                        </div>
+                        <div class="passwordDiv">
+                            <input type="password" placeholder="password">
+                        </div>
+                        <div class="Terms"><input type="checkbox">
+                            I accept all <a href="#">T&C</a> of this platform.
+                        </div>
+                        <div class="submitdiv">
+                            <button>Login</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="LoginImg">
+                    <img src="images/LOGIN-sideImg.png" alt="img">
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <!-- ------------------JavaScript ahead--------->
+    <script src="script.js">
+
+    </script>
+</body>
+
+</html>
