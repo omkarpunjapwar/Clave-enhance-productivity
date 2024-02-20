@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -58,3 +58,85 @@
 </body>
 
 </html>
+
+ -->
+<!-- To achieve the functionality you described, you need to ensure that the event listener for adding list items to a
+specific todo tab is associated with the correct tab. Here's a general approach you can take:
+
+1. When you add a new todo tab, make sure to attach an event listener to the "+" icon within that tab.
+2. Inside the event listener for the "+" icon, you need to access the parent todo tab and then add the list item to that
+specific tab.
+
+Here's a simplified example:
+
+```html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Management App</title>
+    <style>
+        /* Add your CSS styles here */
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- Button to add a new todo tab -->
+        <button id="addTabButton">Add Todo Tab</button>
+    </div>
+
+    <script>
+        // Get the container element where todo tabs will be appended
+        const appContainer = document.getElementById('app');
+
+        // Function to add a new todo tab
+        function addTodoTab() {
+            const newTab = document.createElement('div');
+            newTab.classList.add('todoTab');
+
+            // Add a heading section
+            const heading = document.createElement('h2');
+            heading.textContent = 'New Todo Tab';
+            newTab.appendChild(heading);
+
+            // Add a "+" button to add list items
+            const addButton = document.createElement('button');
+            addButton.textContent = '+';
+            addButton.classList.add('addButton');
+
+            // Add event listener to the "+" button
+            addButton.addEventListener('click', addListItem);
+
+            newTab.appendChild(addButton);
+
+            // Append the new todo tab to the app container
+            appContainer.appendChild(newTab);
+        }
+
+        // Function to add a list item to the todo tab
+        function addListItem(event) {
+            // Get the parent todo tab of the clicked "+" button
+            const todoTab = event.target.closest('.todoTab');
+
+            // Create a new list item
+            const listItem = document.createElement('div');
+            listItem.textContent = 'New List Item';
+
+            // Append the new list item to the todo tab
+            todoTab.appendChild(listItem);
+        }
+
+        // Add event listener to the button to add a new todo tab
+        document.getElementById('addTabButton').addEventListener('click', addTodoTab);
+    </script>
+</body>
+
+</html>
+```
+<!-- 
+In this example, each time you click the "Add Todo Tab" button, a new todo tab is created with a heading section and a
+"+" button. When you click the "+" button within a specific tab, it adds a new list item only to that tab. This ensures
+that list items are added to the respective tabs. -->
