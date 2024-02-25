@@ -141,7 +141,6 @@ body {
     flex-direction: column;
     background: rgba(31, 20, 43, 0.319);
     backdrop-filter: blur(240px);
-
 }
 
 .sideBarlist {
@@ -189,7 +188,6 @@ body {
     /* justify-content: center; */
     /* for LoginPage */
     /* align-items: center; */
-    overflow: hidden;
     overflow-y: auto;
     scrollbar-width: none;
 }
@@ -205,6 +203,7 @@ body {
     margin-top: 5em;
     overflow-x: auto;
     scrollbar-width: none;
+   
 }
 
 
@@ -256,6 +255,11 @@ body {
         inset 0px 0px 11px rgba(3, 7, 18, 0.08),
         inset 0px 0px 17px rgba(3, 7, 18, 0.10),
         inset 0px 0px 24px rgba(3, 7, 18, 0.12); */
+}
+
+
+.SPANotesTab {
+    margin: 3em;
 }
 
 .ndBG {
@@ -468,7 +472,6 @@ body {
     display: flex;
     margin: 0px 5px;
     margin-left: -15px;
-    margin-top: -2px;
     cursor: pointer;
     visibility: hidden;
 }
@@ -482,6 +485,8 @@ body {
 .checkBox2{
     display: flex;
     width: 15px;
+    cursor: pointer;
+
 }
 
 .ToDoText {

@@ -29,7 +29,13 @@ function addNewListTab() {
 }
 addNewListTab(); // adding a new NotePad is Done.
 
-//adding New ToDO List-->
+function scrollHorizontally(event) {
+  var container = document.querySelector(".Notes");
+  container.scrollLeft += event.deltaY * 1; // Adjust scroll speed
+  event.preventDefault();
+};
+
+//adding New ToDO Tab-->
 function addNewToDoTab() {
   let ToDObutton = document.querySelector(".checkButt");
   let ToDoContainerJS = document.querySelector(".ToDoContainer");
@@ -54,9 +60,9 @@ function addNewToDoTab() {
 
     let deleteTabDivJS = document.createElement("div");
     deleteTabDivJS.className = "deleteTabDiv";
-
     let deleteTabIcon = document.createElement("img");
     deleteTabIcon.src = "images/CrossIcon.png";
+    deleteTabIcon.className = "deleteTabDivIcon";
     deleteTabDivJS.appendChild(deleteTabIcon);
 
     let ToDoListJS = document.createElement("div");
@@ -68,8 +74,11 @@ function addNewToDoTab() {
     let li = document.createElement("li");
     let deleteButt = document.createElement("div");
     deleteButt.className = "DeleteButt";
+
     let deleteimg = document.createElement("img");
+    deleteimg.className = "DeleteButtIcon";
     deleteimg.src = "images/delete.png";
+
     deleteButt.appendChild(deleteimg);
 
     let checkbox2JS = document.createElement("img");
@@ -107,30 +116,73 @@ function addNewToDoTab() {
       deleteButt.className = "DeleteButt";
       let deleteimg = document.createElement("img");
       deleteimg.src = "images/delete.png";
-      let input = document.createElement("input");
-      input.type = "checkbox";
+      deleteimg.className = "DeleteButtIcon";
+
+      let checkBox2JS = document.createElement("img");
+      checkBox2JS.className = "checkBox2";
+      checkBox2JS.src = "images/checkSquare.png";
       let TodoTextJS = document.createElement("div");
       TodoTextJS.className = "ToDoText";
       TodoTextJS.contentEditable = "true";
       TodoTextJS.innerText = "sample text...";
       deleteButt.appendChild(deleteimg);
       li.appendChild(deleteButt);
-      li.appendChild(input);
+      li.appendChild(checkBox2JS);
       li.appendChild(TodoTextJS);
       UL.appendChild(li);
     }
   });
+
+  ToDoContainerJS.addEventListener("click", function (event) {
+    if (event.target.classList.contains("checkBox2")) {
+      let listItem = event.target.closest("li"); // Find the parent list item
+      let checkBox = listItem.querySelector(".checkBox2");
+      let todoText = listItem.querySelector(".ToDoText");
+
+      let checkSquareImg = "checkSquare.png";
+      let markedCheckBoxImg = "markedCheckBox.png";
+
+      // Extract filenames from src attributes
+      let checkBoxSrc = checkBox.src.split("/").pop(); // Extracts the filename from the URL
+
+      if (checkBoxSrc === checkSquareImg) {
+        checkBox.src = "images/markedCheckBox.png";
+        todoText.style.textDecoration = "line-through";
+        todoText.style.opacity = "50%";
+      } else if (checkBoxSrc === markedCheckBoxImg) {
+        checkBox.src = "images/checkSquare.png";
+        todoText.style.textDecoration = "none";
+        todoText.style.opacity = "100%";
+      }
+    }
+  });
+
+  ToDoContainerJS.addEventListener("click", function (event) {
+    if (event.target.classList.contains("DeleteButtIcon")) {
+      let listItem = event.target.closest("li"); // Find the parent list item
+      if (listItem) {
+        listItem.remove(); // Remove the list item if found
+      }
+    }
+  });
 }
 addNewToDoTab();
+
+// to delete the todo Tab
+
+let ToDoContainerJS = document.querySelector(".ToDoContainer");
+
+ToDoContainerJS.addEventListener("click", function (event) {
+  if (event.target.classList.contains("deleteTabDivIcon")) {
+    let ToDoTab = event.target.closest(".todoTab"); // Find the parent Tab item
+    if (ToDoTab) {
+      ToDoTab.remove(); // Remove the Tab if found
+    }
+  }
+});
+
 //new tab added.
 
-// -------------> Hints on hover
-
-// function Hints(){
-// let Plus = document.querySelector("addIcon");
-// let HintAdd=document.querySelector('')
-
-// } Hints();
 
 // function for SPA ---->
 
@@ -160,39 +212,16 @@ function SPAToggle() {
     LoginPage.style.display = "none";
     ToDoSection.style.display = "flex";
   });
-  ListNavButt.addEventListener("click", () => {
+  ListNavButt.addEventListener("click", (event) => {
     ToDoSection.style.display = "none";
     LoginPage.style.display = "none";
     NotesSection.style.display = "flex";
+
+    NotesSection.style.flexWrap = "wrap";
+
+    NotesSection.style.overflowY = "auto";
   });
 }
 SPAToggle();
 
-// Adding list items ------>
-// AddIcon = document.querySelectorAll(".addIcon");
-// console.log(AddIcon);
-// todoTabJS = document.querySelectorAll(".todoTab");
-// console.log(todoTabJS);
-// TodoTextJS = document.querySelectorAll(".ToDoText");
-// console.log("this is listItems", TodoTextJS);
-// AddIcon.forEach(function (AddIcon, index) {
-//   AddIcon.addEventListener("click", () => {
-//     let ToDoListJS = document.querySelectorAll(".TodoList");
-//     let UL = document.querySelectorAll(".TodoList ul");
-//     let li = document.createElement("li");
-//     let input = document.createElement("input");
-//     input.type = "checkbox";
-//     let TodoTextJS = document.createElement("div");
-//     TodoTextJS.className = "ToDoText";
-//     TodoTextJS.contentEditable = "true";
-//     TodoTextJS.innerText = "sample text...";
-//     li.appendChild(input);
-//     li.appendChild(TodoTextJS);
-//     UL.forEach(function (UL, index) {
-//       UL.appendChild(li);
-//     });
-//     ToDoListJS.forEach(function (ToDoListJS, index) {
-//       ToDoListJS.appendChild(UL);
-//     });
-//   });
-// });
+
