@@ -5,9 +5,14 @@ function addNewListTab() {
 
   listButton.addEventListener("click", () => {
     let NotesJS = document.querySelector(".Notes");
-    console.log(NotesJS);
     let NotesTabJS = document.createElement("div");
     NotesTabJS.className = "NotesTab";
+    NotesTabJS.style.order = "-1";
+
+    let TopDivNT = document.createElement("div");
+    TopDivNT.className = "topDivNT";
+    let NtIconsdiv = document.createElement("div");
+    NtIconsdiv.className = "NTiconsDiv";
 
     let HeadingJS = document.createElement("div");
     HeadingJS.className = "headingArea";
@@ -21,19 +26,173 @@ function addNewListTab() {
 
     let saveIconJS = document.createElement("div");
     saveIconJS.className = "saveIcon";
-    NotesTabJS.appendChild(HeadingJS);
+    console.log(saveIconJS);
+    let MaximizeJS = document.createElement("div");
+    MaximizeJS.className = "maximize";
+    let minimizeJS = document.createElement("div");
+    minimizeJS.className = "minimize";
+    let deleteNoteJS = document.createElement("div");
+    deleteNoteJS.className = "DeleteNote";
+
+    NtIconsdiv.appendChild(saveIconJS);
+    NtIconsdiv.appendChild(MaximizeJS);
+    NtIconsdiv.appendChild(minimizeJS);
+    NtIconsdiv.appendChild(deleteNoteJS);
+    TopDivNT.appendChild(HeadingJS);
+    TopDivNT.appendChild(NtIconsdiv);
+    NotesTabJS.appendChild(TopDivNT);
     NotesTabJS.appendChild(NotePadJS);
-    NotesTabJS.appendChild(saveIconJS);
     NotesJS.appendChild(NotesTabJS);
   });
 }
 addNewListTab(); // adding a new NotePad is Done.
 
-function scrollHorizontally(event) {
-  var container = document.querySelector(".Notes");
-  container.scrollLeft += event.deltaY * 1; // Adjust scroll speed
+let NotesJS = document.querySelector(".Notes");
+
+NotesJS.addEventListener("click", function (event) {
+  if (event.target.classList.contains("DeleteNote")) {
+    let NotesTab = event.target.closest(".NotesTab"); // Find the parent Tab item
+    if (NotesTab) {
+      NotesTab.remove(); // Remove the Tab if found
+    }
+  }
+});
+
+// Get the contenteditable div
+
+// Add event listener for paste event
+NotesJS.addEventListener("paste", function (event) {
+  // Prevent the default paste action
+  event.preventDefault();
+  if (event.target.classList.contains("NotePad")) {
+    // Get the plain text representation of the clipboard data
+    var text = (event.originalEvent || event).clipboardData.getData(
+      "text/plain"
+    );
+
+    // Insert the plain text into the contenteditable div
+    document.execCommand("insertText", false, text);
+  }
+});
+
+// to delete Note Tab---->
+
+// To Scroll Horizontally NoteTabs---------->
+var Notescontainer = document.querySelector(".Notes");
+Notescontainer.onwheel = (event) => {
+  Notescontainer.scrollLeft += event.deltaY * 1; // Adjust scroll speed
   event.preventDefault();
 };
+
+// To maximize The Note Tab----->
+
+NotesJS.addEventListener("click", function (event) {
+  if (event.target.classList.contains("maximize")) {
+    let NotesTab = event.target.closest(".NotesTab"); // Find the parent Tab item
+    if (NotesTab) {
+      let ToDoContainerJS = document.querySelector(".ToDoContainer");
+
+      let NotePadJS = NotesTab.querySelector(".NotePad");
+      let ToDoTopJS = NotesTab.querySelector(".topDivNT");
+      let ToDoIcons = NotesTab.querySelector(".NTiconsDiv");
+      let headingJS = NotesTab.querySelector(".headingArea");
+      let saveIconJS = NotesTab.querySelector(".saveIcon");
+      let maximizeJS = NotesTab.querySelector(".maximize");
+      let minimizeJS = NotesTab.querySelector(".minimize");
+      let deleteNoteJS = NotesTab.querySelector(".DeleteNote");
+
+      ToDoContainerJS.style.display = "none";
+      NotesJS.style.width = "100%";
+      NotesJS.style.display = "flex";
+      NotesJS.style.marginTop = "0";
+      NotesJS.style.padding = "0";
+      NotesJS.style.overflow = "clip";
+      NotesTab.style.order = "-2";
+      NotesTab.style.minWidth = "93vw";
+      NotesTab.style.height = "89vh";
+      NotesTab.style.margin = "0";
+      NotesTab.style.border = "none";
+      NotePadJS.style.width = "85vw";
+      NotePadJS.style.height = "70vh";
+      ToDoIcons.style.width = "8em";
+      ToDoIcons.style.paddingRight = "8em";
+
+      saveIconJS.style.width = "25px";
+      saveIconJS.style.height = "25px";
+      deleteNoteJS.style.width = "25px";
+      deleteNoteJS.style.height = "25px";
+      headingJS.style.width = "50em";
+
+      maximizeJS.style.display = "none";
+      minimizeJS.style.display = "flex";
+      minimizeJS.classList.add("flag");
+
+      // To scroll vertically within the NotePad
+      NotePadJS.onwheel = (event) => {
+        NotePadJS.scrollTop += event.deltaY * 1; // Adjust scroll speed
+        event.preventDefault();
+      };
+    }
+  }
+});
+
+// To minimize The Note Tab----->
+
+NotesJS.addEventListener("click", function (event) {
+  if (event.target.classList.contains("minimize")) {
+    let NotesTab = event.target.closest(".NotesTab"); // Find the parent Tab item
+    if (NotesTab) {
+      let ToDoContainerJS = document.querySelector(".ToDoContainer");
+
+      let NotePadJS = NotesTab.querySelector(".NotePad");
+      let ToDoTopJS = NotesTab.querySelector(".topDivNT");
+      let ToDoIcons = NotesTab.querySelector(".NTiconsDiv");
+      let headingJS = NotesTab.querySelector(".headingArea");
+      let saveIconJS = NotesTab.querySelector(".saveIcon");
+      let maximizeJS = NotesTab.querySelector(".maximize");
+      let minimizeJS = NotesTab.querySelector(".minimize");
+      let deleteNoteJS = NotesTab.querySelector(".DeleteNote");
+
+      ToDoContainerJS.style.display = "grid";
+      NotesJS.style.display = "flex";
+      NotesJS.style.width = "80em";
+      NotesJS.style.marginTop = "1em";
+      NotesJS.style.padding = "1em";
+      NotesJS.style.overflowX = "scroll";
+      NotePadJS.style.overflowX = "clip";
+      NotesTab.style.removeProperty("order");
+      NotesTab.style.minWidth = "21em";
+      NotesTab.style.height = "10em";
+      NotesTab.style.margin = "0em 1.3em";
+      NotesTab.style.border = "1px solid rgba(255, 255, 255, 0.121)";
+      NotePadJS.style.width = "26em";
+      NotePadJS.style.height = "6em";
+      ToDoIcons.style.width = "5em";
+      ToDoIcons.style.paddingRight = "0em";
+
+      saveIconJS.style.width = "17px";
+      saveIconJS.style.height = "17px";
+      deleteNoteJS.style.width = "17px";
+      deleteNoteJS.style.height = "17px";
+      headingJS.style.width = "14em";
+
+      minimizeJS.style.display = "none";
+      maximizeJS.style.display = "flex";
+      minimizeJS.classList.remove("flag");
+
+      // To Scroll Horizontally NoteTabs---------->
+
+      NotesJS.style.flexWrap = "nowrap";
+      NotesJS.onwheel = (event) => {
+        NotesJS.scrollLeft += event.deltaY * 1; // Adjust scroll speed
+        event.preventDefault();
+      };
+      // console.log("clicking broo");
+    }
+  }
+});
+
+// -------------------------------------------------------------------------->
 
 //adding New ToDO Tab-->
 function addNewToDoTab() {
@@ -43,6 +202,7 @@ function addNewToDoTab() {
   ToDObutton.addEventListener("click", () => {
     let todoTabJS = document.createElement("div");
     todoTabJS.className = "todoTab";
+    todoTabJS.style.order = "-1";
     let ToDoTopJS = document.createElement("div");
     ToDoTopJS.className = "ToDoTop";
     let ToDoHeadingJS = document.createElement("div");
@@ -183,7 +343,6 @@ ToDoContainerJS.addEventListener("click", function (event) {
 
 //new tab added.
 
-
 // function for SPA ---->
 
 function SPAToggle() {
@@ -194,6 +353,7 @@ function SPAToggle() {
   let HomeNavButt = document.querySelector("#homeNavButt");
   let ToDoNavButt = document.querySelector("#todoNavButt");
   let ListNavButt = document.querySelector("#listNavButt");
+
   // console.log(ProfileIcon)
 
   ProfileNavButt.addEventListener("click", () => {
@@ -205,23 +365,45 @@ function SPAToggle() {
     //  console.log("hehehe")
     LoginPage.style.display = "none";
     NotesSection.style.display = "flex";
-    ToDoSection.style.display = "flex";
+    ToDoSection.style.display = "grid";
+    NotesSection.style.flexWrap = "nowrap";
+    let flagJS = document.querySelector(".flag");
+    if (flagJS) {
+      flagJS.click();
+    }
+    // To scroll Horizontally within the NotePad
+    NotesSection.onwheel = (event) => {
+      NotesSection.scrollLeft += event.deltaY * 1; // Adjust scroll speed
+      event.preventDefault();
+    };
   });
   ToDoNavButt.addEventListener("click", () => {
     NotesSection.style.display = "none";
     LoginPage.style.display = "none";
-    ToDoSection.style.display = "flex";
+    ToDoSection.style.display = "grid";
   });
   ListNavButt.addEventListener("click", (event) => {
+    let flagJS = document.querySelector(".flag");
+    if (flagJS) {
+      flagJS.click();
+    }
+
     ToDoSection.style.display = "none";
     LoginPage.style.display = "none";
-    NotesSection.style.display = "flex";
+    NotesSection.style.display = "grid";
+    NotesSection.style.gridTemplateColumns = "400px 400px 400px";
+    NotesSection.style.gap = "1em";
 
-    NotesSection.style.flexWrap = "wrap";
-
-    NotesSection.style.overflowY = "auto";
+    // NotesSection.style.Wrap = "wrap";
+    NotesSection.style.overflowY = "scroll";
+    // To scroll vertically within the NotePad
+    NotesSection.onwheel = (event) => {
+      let NotePadJS = event.target.classList.contains("NotesPad");
+      if (NotePadJS) {
+        NotePadJS.scrollTop += event.deltaY * 1; // Adjust scroll speed
+        event.preventDefault();
+      }
+    };
   });
 }
 SPAToggle();
-
-

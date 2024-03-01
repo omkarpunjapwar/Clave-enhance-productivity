@@ -199,42 +199,26 @@ body {
     border-radius: 20px;
     width: 80em;
     min-height: 12em;
-    padding: 1em;
-    margin-top: 5em;
+    padding: 0.1em 1em;
+    margin-top: 1em;
     overflow-x: auto;
     scrollbar-width: none;
-   
+
 }
 
 
 
-/* .NotesTabBG {
-    width: 20em;
-    height: 10em;
-    background: rgba(5, 0, 11, 0.344);
-    border-radius: 26px;
-    border: 2px solid red;
-}
-*/
-
-/* .circleTabBG {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background: rgba(7, 159, 209, 0.379);
-    position: absolute;
-
-} */
 
 .NotesTab {
-    min-width: 20em;
+    min-width: 21em;
     height: 10em;
     border: 1px solid rgba(255, 255, 255, 0.121);
     /* background: rgba(185, 89, 254, 0.108); */
     /* backdrop-filter: blur(50px); */
     border-radius: 26px;
     /* border: 2px solid red; */
-    margin: 0em 1em;
+    margin: 0em 1.3em;
+    padding: 1em;
     display: flex;
     flex-direction: column;
     align-items: start;
@@ -247,38 +231,36 @@ body {
         8.8px 8.8px 33.4px rgba(0, 0, 0, 0.05),
         21px 21px 80px rgba(0, 0, 0, 0.07);
 
-
-
-    /* box-shadow: inset 0px 0px 1px rgba(3, 7, 18, 0.02),
-        inset 0px 0px 3px rgba(3, 7, 18, 0.04),
-        inset 0px 0px 6px rgba(3, 7, 18, 0.06),
-        inset 0px 0px 11px rgba(3, 7, 18, 0.08),
-        inset 0px 0px 17px rgba(3, 7, 18, 0.10),
-        inset 0px 0px 24px rgba(3, 7, 18, 0.12); */
 }
 
 
-.SPANotesTab {
-    margin: 3em;
+
+
+
+.topDivNT {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    border-radius: 10px;
+    /* border: 1px solid red; */
 }
 
-.ndBG {
-    background: rgba(244, 106, 78, 0.127);
-}
+.NTiconsDiv {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 
-.rdBG {
-    background: rgb(242, 90, 186);
+    width: 5em;
+    /* border: 1px solid red; */
 }
-
 
 
 .headingArea {
     font-family: "HeadingFont";
     white-space: nowrap;
-    margin-bottom: 0em;
-    width: 12em;
+    width: 14em;
     max-height: 1em;
-    margin-left: 0.7em;
     padding: 0.5em;
     color: rgb(246, 246, 246);
     font-size: large;
@@ -294,14 +276,80 @@ body {
     color: rgba(255, 255, 255, 0.193);
 }
 
+.saveIcon {
+    background-image: url(images/save2.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 17px;
+    height: 17px;
+    opacity: 20%;
+    cursor: pointer;
+    /* border: 1px solid red; */
+}
+
+.saveIcon:hover {
+    opacity: 100%;
+}
+
+.maximize {
+    background-image: url('images/enlarge.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 17px;
+    height: 17px;
+    display: flex;
+    cursor: pointer;
+    opacity: 20%;
+    /* border: 1px solid red; */
+}
+
+.maximize:hover {
+    opacity: 100%;
+}
+
+.minimize {
+    background-image: url('images/minimize-30.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 25px;
+    height: 25px;
+    display: none;
+    cursor: pointer;
+    opacity: 20%;
+}
+
+.minimize:hover {
+    opacity: 100%;
+}
+
+
+
+.DeleteNote {
+    background-image: url('images/delete.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 17px;
+    height: 17px;
+    display: flex;
+    cursor: pointer;
+    opacity: 20%;
+    /* border: 1px solid red; */
+
+}
+
+.DeleteNote:hover {
+    opacity: 100%;
+}
+
+
+
+
 .NotePad {
     font-family: "HeadingFont";
     font-size: small;
-    padding: 1em;
-    padding-top: 0em;
-    width: 20em;
-    height: 5em;
-    margin-top: 1em;
+    padding-left: 0.5em;
+    width: 26em;
+    height: 6em;
     color: white;
     background: rgba(5, 0, 11, 0);
     outline: none;
@@ -311,30 +359,10 @@ body {
     scrollbar-width: none;
 }
 
+
+
 .NotePad::placeholder {
     color: rgba(255, 255, 255, 0.193);
-}
-
-.saveIcon {
-    background-image: url(images/save2.png);
-    background-size: contain;
-    width: 17px;
-    height: 17px;
-    transform: translate(16em, -7.8em);
-    opacity: 20%;
-    cursor: pointer;
-}
-
-.saveIcon::after {
-    content: "";
-    background-image: url('images/enlarge.png');
-    background-size: contain;
-    width: 17px;
-    height: 17px;
-    margin-left: 2px;
-    display: flex;
-    transform: translate(1em, 0em);
-    cursor: pointer;
 }
 
 
@@ -342,25 +370,29 @@ body {
 
 
 .ToDoContainer {
-    display: flex;
+    display: grid;
+   grid-template-columns:400px 400px 400px;
+   gap: 2em;
+   justify-items: center;
     /* border: 2px solid white; */
-    flex-wrap: wrap;
+    
+    
     padding: 1.5em;
 }
 
 .todoTab {
     /* position:absolute; */
     display: flex;
-    width: 300px;
-    min-height: 400px;
+    width: 310px;
+    height: 400px;
     margin: 1em;
-    margin-right: 6em;
     border: 1px solid rgba(255, 255, 255, 0.121);
     /* background: #2a2b4353; */
-    border-radius: 20px;
+    border-radius: 26px;
     display: flex;
     flex-direction: column;
     align-items: center;
+
 }
 
 .ToDoTop {
@@ -409,9 +441,13 @@ body {
     cursor: pointer;
 }
 
-.addIcon {
 
+.addIcon {
     transform: rotate(45deg);
+}
+
+.ToDoIcons img:hover {
+    opacity: 100%;
 }
 
 .addListItemDiv:hover.addListItemDiv::before {
@@ -449,11 +485,14 @@ body {
 }
 
 .TodoList ul {
+    max-height: 350px;
     list-style-type: none;
     color: white;
     display: flex;
     flex-direction: column;
     margin-top: .5em;
+    overflow-y: scroll;
+    scrollbar-width: none;
 }
 
 .TodoList ul li {
@@ -481,13 +520,17 @@ body {
     opacity: 60%;
 }
 
+.DeleteButt img:hover {
+    opacity: 100%;
+}
 
-.checkBox2{
+.checkBox2 {
     display: flex;
     width: 15px;
     cursor: pointer;
 
 }
+
 
 .ToDoText {
     width: 22em;
