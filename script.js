@@ -1,3 +1,20 @@
+// show buttons
+function showButtons() {
+  let topBarButtJS = document.querySelector(".topBarButtons");
+  let buttons = document.querySelector(".createButtons");
+
+  topBarButtJS.addEventListener("click", () => {
+    if (buttons.style.display === "flex" || buttons.style.display === "") {
+      buttons.style.display = "none";
+       topBarButtJS.innerText = "+";
+    } else {
+      buttons.style.display = "flex";
+      topBarButtJS.innerText="x";
+    }
+  });
+}
+showButtons();
+
 //adding New NotePad-->
 function addNewListTab() {
   let listButton = document.querySelector(".listButt");
@@ -51,6 +68,10 @@ let NotesJS = document.querySelector(".Notes");
 
 NotesJS.addEventListener("click", function (event) {
   if (event.target.classList.contains("DeleteNote")) {
+    let flagJS = document.querySelector(".flag");
+    if (flagJS) {
+      flagJS.click();
+    }
     let NotesTab = event.target.closest(".NotesTab"); // Find the parent Tab item
     if (NotesTab) {
       NotesTab.remove(); // Remove the Tab if found
@@ -115,7 +136,7 @@ NotesJS.addEventListener("click", function (event) {
       NotePadJS.style.width = "85vw";
       NotePadJS.style.height = "70vh";
       ToDoIcons.style.width = "8em";
-      ToDoIcons.style.paddingRight = "8em";
+      ToDoIcons.style.paddingRight = "1em";
 
       saveIconJS.style.width = "25px";
       saveIconJS.style.height = "25px";
@@ -187,6 +208,21 @@ NotesJS.addEventListener("click", function (event) {
         NotesJS.scrollLeft += event.deltaY * 1; // Adjust scroll speed
         event.preventDefault();
       };
+
+      let flagNotesJS = document.querySelector(".flagNotes");
+      if (flagNotesJS) {
+        ToDoContainerJS.style.display = "none";
+        NotesJS.style.display = "grid";
+        NotesJS.style.gridTemplateColumns = "400px 400px 400px";
+        NotesJS.style.gap = "1em";
+
+        NotesJS.style.Wrap = "wrap";
+        NotesJS.style.overflowY = "scroll";
+        NotesJS.onwheel = (event) => {
+          NotesJS.scrollTop += event.deltaY * 1; // Adjust scroll speed
+          event.preventDefault();
+        };
+      }
       // console.log("clicking broo");
     }
   }
@@ -353,6 +389,8 @@ function SPAToggle() {
   let HomeNavButt = document.querySelector("#homeNavButt");
   let ToDoNavButt = document.querySelector("#todoNavButt");
   let ListNavButt = document.querySelector("#listNavButt");
+  let topBarButtJS = document.querySelector(".topBarButtons");
+  let profileJS = document.querySelector("#profile");
 
   // console.log(ProfileIcon)
 
@@ -360,17 +398,31 @@ function SPAToggle() {
     NotesSection.style.display = "none";
     ToDoSection.style.display = "none";
     LoginPage.style.display = "flex";
+    NotesSection.classList.remove("flagNotes");
+    topBarButtJS.style.display = "none";
+
+    HomeNavButt.style.background = " transparent";
+    ToDoNavButt.style.background = "transparent";
+    ListNavButt.style.background = " transparent";
+    profileJS.style.background = "rgb(5, 37, 58)";
   });
   HomeNavButt.addEventListener("click", () => {
     //  console.log("hehehe")
+    topBarButtJS.style.display = "flex";
     LoginPage.style.display = "none";
     NotesSection.style.display = "flex";
     ToDoSection.style.display = "grid";
     NotesSection.style.flexWrap = "nowrap";
+    NotesSection.classList.remove("flagNotes");
     let flagJS = document.querySelector(".flag");
     if (flagJS) {
       flagJS.click();
     }
+    profileJS.style.background = "transparent";
+    ToDoNavButt.style.background = "transparent";
+    ListNavButt.style.background = " transparent";
+    HomeNavButt.style.background = " rgb(17,22,41)";
+
     // To scroll Horizontally within the NotePad
     NotesSection.onwheel = (event) => {
       NotesSection.scrollLeft += event.deltaY * 1; // Adjust scroll speed
@@ -378,21 +430,34 @@ function SPAToggle() {
     };
   });
   ToDoNavButt.addEventListener("click", () => {
+    topBarButtJS.style.display = "flex";
     NotesSection.style.display = "none";
     LoginPage.style.display = "none";
     ToDoSection.style.display = "grid";
+    NotesSection.classList.remove("flagNotes");
+    profileJS.style.background = "transparent";
+    HomeNavButt.style.background = " transparent";
+    ListNavButt.style.background = " transparent";
+    ToDoNavButt.style.background = " rgb(17,22,41)";
   });
   ListNavButt.addEventListener("click", (event) => {
     let flagJS = document.querySelector(".flag");
     if (flagJS) {
       flagJS.click();
     }
+    topBarButtJS.style.display = "flex";
+    NotesSection.classList.add("flagNotes");
 
     ToDoSection.style.display = "none";
     LoginPage.style.display = "none";
     NotesSection.style.display = "grid";
     NotesSection.style.gridTemplateColumns = "400px 400px 400px";
     NotesSection.style.gap = "1em";
+
+    profileJS.style.background = "transparent";
+    HomeNavButt.style.background = " transparent";
+    ToDoNavButt.style.background = "transparent";
+    ListNavButt.style.background = " rgb(17,22,41)";
 
     // NotesSection.style.Wrap = "wrap";
     NotesSection.style.overflowY = "scroll";
@@ -407,3 +472,22 @@ function SPAToggle() {
   });
 }
 SPAToggle();
+
+function loginPageEvents() {
+  let loginButt = document.querySelector(".submitdiv button");
+  let MovingBallJS = document.querySelector(".movingball");
+  loginButt.addEventListener("mousemove", (e) => {
+    MovingBallJS.style.display = "flex";
+    const buttonRect = loginButt.getBoundingClientRect();
+    const mouseX = Math.min(
+      Math.max(e.clientX - buttonRect.left, 0),
+      buttonRect.width
+    );
+    const mouseY = Math.min(
+      Math.max(e.clientY - buttonRect.top, 0),
+      buttonRect.height
+    );
+    MovingBallJS.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+  });
+}
+loginPageEvents();

@@ -15,21 +15,21 @@
         <div class="BgCircle1"></div>
 
         <ul class="topBarlist">
-            <li class="topBarText">Create</li>
+            <li class="topBarButtons">+</li>
             <li class="createButtons"> <img class="checkButt" src="images/checkBox.png" alt=""><img class="listButt"
                     src="images/list.png" alt=""></li>
             <li class="reload" onclick="location.reload()"><img src="images/reload-white.png" alt="icon*"></li>
         </ul>
         <div class="sideBarDiv">
             <ul class="sideBarlist">
-                <li class="iconsSideBar"><a href="#"><img id="homeNavButt" src="images/home.png" alt="icon1*"></a></li>
-                <li class="iconsSideBar"><a href="#"><img id="todoNavButt" src="images/checkBox.png" alt="icon1*"></a>
+                <li class="iconsSideBar" id="homeNavButt"><img src="images/home.png" alt="icon1*"></li>
+                <li class="iconsSideBar" id="todoNavButt"><img src="images/checkBox.png" alt="icon1*">
                 </li>
-                <li class="iconsSideBar"><a href="#"><img id="listNavButt" src="images/list.png" alt="icon1*"></a></li>
-                <li class="iconsSideBar" id="profile"><a href="#"><img id="profileNavButt" src="images/profile.png"
-                            alt="icon1*"></a>
-                </li>
+                <li class="iconsSideBar" id="listNavButt"><img src="images/list.png" alt="icon1*"></li>
             </ul>
+            <div id="profile">
+                <img id="profileNavButt" src="images/profile.png" alt="icon1*">
+            </div>
         </div>
 
         <div class="main_container">
@@ -196,6 +196,7 @@
                         </div>
                         <div class="submitdiv">
                             <button>Login</button>
+                            <div class="movingball"></div>
                         </div>
                     </div>
                 </div>
@@ -210,9 +211,14 @@
 
 
     <!-- ------------------JavaScript ahead--------->
-    <script src="script.js">
 
-    </script>
+    <!-- ----scroll.js CDN---- -->
+
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.min.js"></script>
+
+    <!-- ----COSTUME SCRIPT---- -->
+
+    <script src="script.js"></script>
 </body>
 
 </html>
