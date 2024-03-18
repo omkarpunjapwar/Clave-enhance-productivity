@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clave - enhance productivity</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="php" href="login.php">
 </head>
 
 <body>
@@ -185,18 +186,38 @@
                         <div class="LoginTagline">
                             Ditch the chaos, unleash the awesome
                         </div>
-                        <div class="emailID">
-                            <input type="email" placeholder="yourname@gmail.com">
+                        <form>
+                            <div class="username">
+                                <input type="text" name="username" placeholder="Username">
+                            </div>
+                            <div class="emailID">
+                                <input type="email" name="email" placeholder="yourname@gmail.com">
+                            </div>
+                            <div class="passwordDiv">
+                                <input type="password" name="password" placeholder="password">
+                            </div>
+                            <div class="Terms"><input type="checkbox">
+                                I accept all <a href="#">T&C</a> of this platform.
+                            </div>
+                            <div class="submitdiv">
+                                <button type="submit">Login</button>
+                                <div class="movingball"></div>
+                            </div>
+                            <div class="signUp">
+                                <h5>Sign Up</h5>
+                            </div>
+                        </form>
+                    </div>
+
+
+                    <!-- ------UserDashboard -->
+                    <div class="userCard">
+                        <div class="userprofile">
                         </div>
-                        <div class="passwordDiv">
-                            <input type="password" placeholder="password">
-                        </div>
-                        <div class="Terms"><input type="checkbox">
-                            I accept all <a href="#">T&C</a> of this platform.
-                        </div>
-                        <div class="submitdiv">
-                            <button>Login</button>
-                            <div class="movingball"></div>
+                        <div class="gretings">Welcome Back!</div>
+                        <div class="userNameDiv">userName</div>
+                        <div class="logoutButt">
+                            log out
                         </div>
                     </div>
                 </div>

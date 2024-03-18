@@ -4,14 +4,18 @@ function showButtons() {
   let buttons = document.querySelector(".createButtons");
 
   topBarButtJS.addEventListener("click", () => {
-    if (buttons.style.display === "flex" || buttons.style.display === "") {
-      buttons.style.display = "none";
-       topBarButtJS.innerText = "+";
-    } else {
+    console.log("button clicked");
+
+    if (buttons.style.display === "none") {
       buttons.style.display = "flex";
-      topBarButtJS.innerText="x";
+      topBarButtJS.innerText = "x";
+    } else {
+      buttons.style.display = "none";
+      topBarButtJS.innerText = "+";
     }
   });
+
+  // buttons.style.transition = "display 1s ease-in-out";
 }
 showButtons();
 
@@ -60,6 +64,7 @@ function addNewListTab() {
     NotesTabJS.appendChild(TopDivNT);
     NotesTabJS.appendChild(NotePadJS);
     NotesJS.appendChild(NotesTabJS);
+    saveData(); //--- to save data.
   });
 }
 addNewListTab(); // adding a new NotePad is Done.
@@ -76,6 +81,7 @@ NotesJS.addEventListener("click", function (event) {
     if (NotesTab) {
       NotesTab.remove(); // Remove the Tab if found
     }
+    saveData(); //--- to save data.
   }
 });
 
@@ -94,6 +100,7 @@ NotesJS.addEventListener("paste", function (event) {
     // Insert the plain text into the contenteditable div
     document.execCommand("insertText", false, text);
   }
+  saveData(); //--- to save data.
 });
 
 // to delete Note Tab---->
@@ -300,6 +307,7 @@ function addNewToDoTab() {
     todoTabJS.appendChild(ToDoTopJS);
     todoTabJS.appendChild(ToDoListJS);
     ToDoContainerJS.appendChild(todoTabJS); // complete ToDoTab.
+    saveData(); //--- to save data.
   });
 
   // Add event listener for the container, listening for clicks on addIcon elements
@@ -326,6 +334,7 @@ function addNewToDoTab() {
       li.appendChild(checkBox2JS);
       li.appendChild(TodoTextJS);
       UL.appendChild(li);
+      saveData(); //--- to save data.
     }
   });
 
@@ -350,6 +359,7 @@ function addNewToDoTab() {
         todoText.style.textDecoration = "none";
         todoText.style.opacity = "100%";
       }
+      saveData(); //--- to save data.
     }
   });
 
@@ -359,6 +369,7 @@ function addNewToDoTab() {
       if (listItem) {
         listItem.remove(); // Remove the list item if found
       }
+      saveData(); //--- to save data.
     }
   });
 }
@@ -374,6 +385,7 @@ ToDoContainerJS.addEventListener("click", function (event) {
     if (ToDoTab) {
       ToDoTab.remove(); // Remove the Tab if found
     }
+    saveData(); //--- to save data.
   }
 });
 
@@ -408,6 +420,7 @@ function SPAToggle() {
   });
   HomeNavButt.addEventListener("click", () => {
     //  console.log("hehehe")
+
     topBarButtJS.style.display = "flex";
     LoginPage.style.display = "none";
     NotesSection.style.display = "flex";
@@ -474,6 +487,39 @@ function SPAToggle() {
 SPAToggle();
 
 function loginPageEvents() {
+  let LoginDiv = document.querySelector(".submitdiv");
+  let signUpButt = document.querySelector(".signUp");
+  let usernametab = document.querySelector(".username");
+
+  let passwordJS = document.querySelector(".passwordDiv input ").value;
+  let emailJS = document.querySelector(".emailID input").value;
+  let usernameJS = document.querySelector(".username input").value;
+
+  LoginDiv.addEventListener("click", () => {
+    if (!passwordJS === "" && !emailJS === "") {
+      console.log("inside logindiv event");
+
+      let loginCard = document.querySelector(".loginCard");
+      let userCard = document.querySelector(".userCard");
+      userCard.style.display = "flex";
+      loginCard.style.display = "none";
+      saveData();
+    } else {
+      console.log("fileds are empty");
+    }
+  });
+
+  let logoutButt = document.querySelector(".logouutButt");
+  let loginCard = document.querySelector(".loginCard");
+  let userCard = document.querySelector(".userCard");
+  if (logoutButt) {
+    logoutButt.addEventListener("click", () => {
+      userCard.style.display = "none";
+      loginCard.style.display = "flex";
+      saveData();
+    });
+  }
+
   let loginButt = document.querySelector(".submitdiv button");
   let MovingBallJS = document.querySelector(".movingball");
   loginButt.addEventListener("mousemove", (e) => {
@@ -491,3 +537,19 @@ function loginPageEvents() {
   });
 }
 loginPageEvents();
+
+// -----------------To save Data in localStorage----
+
+let loginTabJs = document.querySelector(".loginTab");
+
+function saveData() {
+  localStorage.setItem("Notes", NotesJS.innerHTML);
+  localStorage.setItem("ToDos", ToDoContainerJS.innerHTML);
+  localStorage.setItem("loginTab", loginTabJs.innerHTML);
+}
+function retriveData() {
+  NotesJS.innerHTML = localStorage.getItem("Notes");
+  ToDoContainerJS.innerHTML = localStorage.getItem("ToDos");
+  loginTabJs.innerHTML = localStorage.getItem("loginTab");
+}
+retriveData();

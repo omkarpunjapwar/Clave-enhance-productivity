@@ -244,8 +244,8 @@ body {
     align-items: center;
     /* border: 2px solid red; */
     border-radius: 20px;
-    width: 80em;
-    min-height: 12em;
+    width: 93vw;
+    min-height: 18vw;
     padding: 0.1em 1em;
     margin-top: 1em;
     overflow-x: auto;
@@ -258,7 +258,7 @@ body {
 
 .NotesTab {
     min-width: 21em;
-    height: 10em;
+    height: 12vw;
     border: 1px solid rgba(255, 255, 255, 0.121);
     /* background: rgba(185, 89, 254, 0.108); */
     /* backdrop-filter: blur(50px); */
@@ -395,7 +395,7 @@ body {
     font-family: "HeadingFont";
     font-size: small;
     padding-left: 0.5em;
-    width: 26em;
+    width: 25vw;
     height: 6em;
     color: white;
     background: rgba(5, 0, 11, 0);
@@ -418,7 +418,7 @@ body {
 
 .ToDoContainer {
     display: grid;
-    grid-template-columns: 400px 400px 400px;
+    grid-template-columns: 29vw 29vw 29vw;
     gap: 2em;
     justify-items: center;
     /* border: 2px solid white; */
@@ -430,9 +430,9 @@ body {
 .todoTab {
     /* position:absolute; */
     display: flex;
-    width: 310px;
-    height: 400px;
-    margin: 1em;
+    width: 24vw;
+    height: 65vh;
+    margin: 1;
     border: 1px solid rgba(255, 255, 255, 0.121);
     /* background: #2a2b4353; */
     border-radius: 26px;
@@ -453,7 +453,7 @@ body {
     font-family: "HeadingFont";
     white-space: nowrap;
     margin-bottom: .5em;
-    width: 12em;
+    width: 16vw;
     max-height: 1em;
     /* margin-left: 0.7em; */
     padding: 0.4em 0em;
@@ -476,7 +476,7 @@ body {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 50px;
+    width: 3.5vw;
     height: 20px;
     margin-left: 5px;
     /* border: 1px solid red; */
@@ -527,7 +527,7 @@ body {
 
 .TodoList {
     /* border: 2px solid red; */
-    width: 280px;
+    width: 20vw;
     height: 300px;
 }
 
@@ -537,6 +537,7 @@ body {
     color: white;
     display: flex;
     flex-direction: column;
+    align-items: center;
     margin-top: .5em;
     overflow-y: scroll;
     scrollbar-width: none;
@@ -547,6 +548,9 @@ body {
     height: auto;
     display: flex;
     align-items: start;
+    /* border: 1px solid red; */
+    padding-left: 1em;
+    width: 19vw;
 }
 
 .TodoList ul li:hover .DeleteButt {
@@ -557,9 +561,10 @@ body {
     /* border: 2px solid red; */
     display: flex;
     margin: 0px 5px;
-    margin-left: -15px;
+    margin-left: -18px;
     cursor: pointer;
     visibility: hidden;
+    position: absolute;
 }
 
 .DeleteButt img {
@@ -580,7 +585,7 @@ body {
 
 
 .ToDoText {
-    width: 22em;
+    width: 17vw;
     height: auto;
     margin-left: 0.5em;
     white-space: text-wrap;
@@ -590,6 +595,7 @@ body {
     border: none;
     border-radius: 3px;
     outline: none;
+    /* border: 1px solid red; */
 }
 
 
@@ -646,10 +652,27 @@ body {
     padding-left: 1em;
 }
 
+.username {
+    margin: 1em 0em;
+    display: none;
+}
+
+.username input {
+    width: 20em;
+    color: white;
+    background: #85858832;
+    backdrop-filter: blur(20px);
+    padding: .9em;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+}
+
 .emailID {
     margin: 1em 0em;
 
 }
+
 
 .emailID input {
     width: 20em;
@@ -727,22 +750,96 @@ body {
     filter: blur(15px);
 }
 
+.signUp {
+    color: white;
+    background: rgba(31, 20, 43, 0.337);
+    margin-top: 2em;
+    /* border: 2px solid red; */
+    font-family: 'HeadingFont';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .8em 0em;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.signUp2 {
+    color: white;
+    background: rgba(31, 20, 43, 0.337);
+    margin-top: 2em;
+    /* border: 2px solid red; */
+    font-family: 'HeadingFont';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .8em 0em;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.userCard {
+    height: 30em;
+    width: 20em;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: left; */
+    /* border: 2px solid red; */
+    z-index: 1;
+}
+
+.userprofile {
+    margin-top: 2em;
+    width: 80px;
+    height: 80px;
+    border: 2px solid white;
+    border-radius: 50%;
+}
+
+.gretings {
+    width: 17.8em;
+    height: 2.65em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1em;
+    font-family: 'HeadingFont';
+    color: white;
+}
+
+.userNameDiv {
+    width: 17.8em;
+    height: 2.65em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1em;
+    font-family: 'HeadingFont';
+    color: white;
+}
+
+.logoutButt {
+    width: 17.8em;
+    height: 2.65em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 6em;
+    font-family: 'HeadingFont';
+    color: rgb(255, 255, 255);
+    background: rgba(31, 20, 43, 0.337);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.logoutButt:hover {
+    color: rgb(238, 65, 65);
+}
+
+
 
 /* Tag-line
 Sticky notes got you stuck? Level up your brain with Clave: The fun & productive note-taking fiesta ! 
 "HeadingFont"
 */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
